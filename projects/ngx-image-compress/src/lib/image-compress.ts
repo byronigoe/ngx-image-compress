@@ -6,6 +6,7 @@ type DataUrl = string;
 interface UploadResponse {
   image: DataUrl;
   orientation: DOC_ORIENTATION;
+  mimetype: string;
 }
 
 export class ImageCompress {
@@ -85,7 +86,7 @@ export class ImageCompress {
         myReader.onloadend = () => {
           try {
             ImageCompress.getOrientation(file, orientation => {
-              resolve({image: myReader.result as string, orientation});
+              resolve({image: myReader.result as string, orientation, mimetype: file.type});
             });
           } catch (e) {
             // console.log(`ngx-image-compress error ${e}`);
