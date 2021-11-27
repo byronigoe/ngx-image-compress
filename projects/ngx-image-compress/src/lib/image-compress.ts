@@ -183,6 +183,10 @@ export class ImageCompress {
 
       };
 
+      sourceImage.onerror = function (e) {
+        reject(e);
+      };
+
       sourceImage.src = imageDataUrlSource;
 
     });
